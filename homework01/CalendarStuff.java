@@ -1,3 +1,4 @@
+
 /**
  *  File name     :  .java
  *  Purpose       :  Provides a class with supporting methods for CountTheDays.java program
@@ -23,8 +24,10 @@
  *  @version 1.0.1  2017-12-25  B.J. Johnson  Updated for Spring 2018
  *  @version 1.0.2  2018-01-18  Brett Derham  Started Homework Assignment
  *  @version 1.0.3  2018-01-23  Brett Derham  First round of edits made
+ *  @version 1.0.4  2018-01-25  Brett Derham  Almost done with edits
  */
 public class CalendarStuff {
+
 
   /**
    * A listing of the days of the week, assigning numbers; Note that the week arbitrarily starts on Sunday
@@ -73,11 +76,11 @@ public class CalendarStuff {
    * @param    year  long containing four-digit year
    * @return         boolean which is true if the parameter is a leap year
    */
-   public static boolean isLeapYear( long year ) {
-     if ( year % 4 == 0 && year % 400 == 0) {
+   public static boolean isLeapYear( long year1 ) {
+     if ( year1 % 4 == 0 && year1 % 400 == 0) {
        return true;
      }
-     else if ( year % 4 == 0 && year % 100 != 0) {
+     else if ( year1 % 4 == 0 && year1 % 100 != 0) {
        return true;
      }
      else {
@@ -92,41 +95,41 @@ public class CalendarStuff {
    * notes: remember that the month variable is used as an indix, and so must
    *         be decremented to make the appropriate index value
    */
-   public static long daysInMonth( long month, long year ) {
-     if (month == 1){
+   public static long daysInMonth( long month1, long year1 ) {
+     if (month1 == 1){
        return 31;
      }
-     else if ((month == 2) && (isLeapYear( year ) == true)) {
+     else if ((month1 == 2) && (isLeapYear( year1 ) == true)) {
        return 29;
      }
-     else if ((month == 2) && (isLeapYear( year ) == false)) {
+     else if ((month1 == 2) && (isLeapYear( year1 ) == false)) {
        return 28;
      }
-     else if (month == 3){
+     else if (month1 == 3){
        return 31;
      }
-     else if (month == 4){
+     else if (month1 == 4){
        return 30;
      }
-     else if (month == 5){
+     else if (month1 == 5){
        return 31;
      }
-     else if (month == 6){
+     else if (month1 == 6){
        return 30;
      }
-     else if (month == 7){
+     else if (month1 == 7){
        return 31;
      }
-     else if (month == 8){
+     else if (month1 == 8){
        return 31;
      }
-     else if (month == 9){
+     else if (month1 == 9){
        return 30;
      }
-     else if (month == 10){
+     else if (month1 == 10){
        return 31;
      }
-     else if (month == 11){
+     else if (month1 == 11){
        return 30;
      }
      else {
@@ -247,9 +250,36 @@ public class CalendarStuff {
    * @return         String containing the string value of the month (no spaces)
    */
    public static String toMonthString( int month ) {
-      switch( month - 1 ) {
-         default: throw new IllegalArgumentException( "Illegal month value given to 'toMonthString()'." );
-      }
+		 String monthString = "";
+         switch (month-1)
+         {
+             case 0:  monthString = "January";
+                      break;
+             case 1:  monthString = "February";
+                      break;
+             case 2:  monthString = "March";
+                      break;
+             case 3:  monthString = "April";
+                      break;
+             case 4:  monthString = "May";
+                      break;
+             case 5:  monthString = "June";
+                      break;
+             case 6:  monthString = "July";
+                      break;
+             case 7:  monthString = "August";
+                      break;
+             case 8:  monthString = "September";
+                      break;
+             case 9:  monthString = "October";
+                      break;
+             case 10: monthString = "November";
+                      break;
+             case 11: monthString = "December";
+                      break;
+             default: throw new IllegalArgumentException( "Illegal month value given to 'toMonthString()'." );
+         }
+         return monthString;
    }
 
   /**
@@ -258,10 +288,27 @@ public class CalendarStuff {
    * @return       String containing the string value of the day (no spaces)
    */
    public static String toDayOfWeekString( int day ) {
-      switch( day - 1 ) {
-        default       : throw new IllegalArgumentException( "Illegal day value given to 'toDayOfWeekString()'." );
-      }
-   }
+		 String dayString = "";
+         switch (day-1)
+         {
+             case 0:  dayString = "Sunday";
+                      break;
+             case 1:  dayString = "Monday";
+                      break;
+             case 2:  dayString = "Tuesday";
+                      break;
+             case 3:  dayString = "Wednesday";
+                      break;
+             case 4:  dayString = "Thursday";
+                      break;
+             case 5:  dayString = "Friday";
+                      break;
+             case 6:  dayString = "Saturday";
+                      break;
+             default: throw new IllegalArgumentException( "Illegal day value given to 'toDayOfWeekString()'." );
+         }
+         return dayString;
+     }
 
   /**
    * A method to return a count of the total number of days between two valid dates
@@ -273,15 +320,31 @@ public class CalendarStuff {
    * @param    year2  long   containing four-digit year
    * @return          long   count of total number of days
    */
-  // public static Date(long year, long month, long day){
-  //    System.out.println( "This is the " + Date );
-  // }
-  public static int daysBetween( int month1, int day1, int year1, int month2, int day2, int year2 ) {
-  //   Date dateOne = new Date(year1, month1, day1);
-  //   Date dateTwo = new Date(year2, month2, day2);
-  //   long diff = dateOne.getTime() - dateTwo.getTime();
-  // int dayCount = diff/(1000*60*60*24)
-     int dayCount = 0;
-    return dayCount;
+  public static long numberOfDays(long month1, long day1, long year1){
+      long numberOfD = 0;
+      for (long i=0; i < year1; i++) {
+        if (isLeapYear(i) == true) {
+          numberOfD = numberOfD + 366;
+        }
+        else {
+          numberOfD = numberOfD + 365;
+        }
+      }
+      for (long i=1; i < month1; i++){
+        numberOfD = numberOfD + daysInMonth(i, year1);
+      }
+        numberOfD = numberOfD + day1;
+      return numberOfD;
+   }
+  public static long daysBetween( long month1, long day1, long year1, long month2, long day2, long year2 ) {
+    long dateOne = numberOfDays(month1, day1, year1);
+    long dateTwo = numberOfDays(month2, day2, year2);
+
+    if (compareDate(month1, day1, year1, month2, day2, year2) == -1) {
+      return dateTwo - dateOne;
+    }
+    else {
+      return dateOne - dateTwo;
+    }
   }
 }
