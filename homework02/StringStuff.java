@@ -18,7 +18,8 @@
  *           -----  ----------  ------------  -----------------------------------------------------------
  *  @version 1.0.0  2017-01-19  B.J. Johnson  Initial writing and release
  *  @version 1.1.0  2017-01-22  B.J. Johnson  Fill in methods to make the program actually work
- *  @version 1.1.1  2018-02-07  Brett Derham     Started Hw assignment and finished 3 methods
+ *  @version 1.1.1  2018-02-07  Brett Derham  Started Hw assignment and finished 3 methods
+ *  @version 1.1.2  2018-02-07  Brett Derham  Finihed final 4 methods 
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 import java.util.Set;
 import java.util.LinkedHashSet;
@@ -82,7 +83,7 @@ public class StringStuff {
        return false;
    }
 
-  /**
+   /**
    * Method to return the characters in a string that correspond to the &quot;EVEN&quot; index
    * numbers of the alphabet.  The letters B, D, F, H, J, L, N, P, R, T, V, X, and Z are even,
    * corresponding to the numbers 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, and 26.
@@ -91,7 +92,20 @@ public class StringStuff {
    * @return  String containing the &quot;even&quot; letters from the input
    */
    public static String evensOnly( String s ) {
-      return new String( "HJHJHJ" );
+     String alphabet = "abcdefghijklmnopqrstuvwxyz";
+  	 String evenLetters = "";
+     String oddLetters = "";
+     String newString = "";
+     for (int i = 1; i < alphabet.length(); i=i+2) {
+       evenLetters = evenLetters + alphabet.charAt(i);
+     }
+     evenLetters = evenLetters + evenLetters.toUpperCase();
+     for (int i = 0; i <s.length(); i++) {
+       if (evenLetters.contains("" + s.charAt(i))) {
+         newString = newString + s.charAt(i);
+       }
+     }
+     return newString;
    }
 
   /**
@@ -103,7 +117,20 @@ public class StringStuff {
    * @return  String containing the &quot;odd&quot; letters from the input
    */
    public static String oddsOnly( String s ) {
-      return new String( "IKIKIK" );
+     String alphabet = "abcdefghijklmnopqrstuvwxyz";
+     String evenLetters = "";
+     String oddLetters = "";
+     String newString = "";
+     for (int i = 0; i < alphabet.length(); i=i+2) {
+       oddLetters = oddLetters + alphabet.charAt(i);
+     }
+     oddLetters = oddLetters + oddLetters.toUpperCase();
+     for (int i = 0; i <s.length(); i++) {
+       if (oddLetters.contains("" + s.charAt(i))) {
+         newString = newString + s.charAt(i);
+       }
+     }
+     return newString;
    }
 
   /**
@@ -114,7 +141,16 @@ public class StringStuff {
    * @return  String containing the &quot;even&quot; letters from the input without duplicates
    */
    public static String evensOnlyNoDupes( String s ) {
-      return new String( "HJ" );
+     String evenPossibilities = "bdfhjlnprtvxzBDFHJLNPRTVXZ";
+     String newString = new String ( "" );
+     for (int i = 0; i < s.length(); i++ ) {
+       if(evenPossibilities.contains(Character.toString(s.charAt(i)))) {
+         if (! newString.contains(Character.toString(s.charAt(i)))) {
+           newString = newString.concat(Character.toString(s.charAt(i)));
+         }
+       }
+     }
+     return newString;
    }
 
   /**
@@ -125,7 +161,16 @@ public class StringStuff {
    * @return  String containing the &quot;odd&quot; letters from the input without duplicates
    */
    public static String oddsOnlyNoDupes( String s ) {
-      return new String( "IK" );
+     String oddPossibilities = "acegikmoqsuwyACEGIKMOQSUWY";
+     String newString = new String ( "" );
+     for (int i = 0; i < s.length(); i++ ) {
+       if(oddPossibilities.contains(Character.toString(s.charAt(i)))) {
+         if (! newString.contains(Character.toString(s.charAt(i)))) {
+           newString = newString.concat(Character.toString(s.charAt(i)));
+         }
+       }
+     }
+     return newString;
    }
 
   /**
