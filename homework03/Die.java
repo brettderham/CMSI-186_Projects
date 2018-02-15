@@ -33,7 +33,9 @@
  *  @version 1.0.0  2017-02-06  B.J. Johnson  Initial writing and release
  *  @version 1.1.0  2017-02-17  B.J. Johnson  Filled in method code
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-public class DieEmpty {
+ import java.lang.Object;
+ import java.lang.Math;
+public class Die {
 
   /**
    * private instance data
@@ -49,15 +51,21 @@ public class DieEmpty {
    * @throws       IllegalArgumentException
    * Note: parameter must be checked for validity; invalid value must throw "IllegalArgumentException"
    */
-   public DieEmpty( int nSides ) {
+   public Die( int nSides ) {
+     if ( nSides < MINIMUM_SIDES) {
+       throw new IllegalArgumentException();
+     }
+     this.sides = nSides;
    }
 
   /**
    * Roll THIS die and return the result
    * @return  integer value of the result of the roll, randomly selected
    */
+
    public int roll() {
-      return 0;
+     int rollValue = (int)((Math.random())*sides+1);
+     return rollValue;
    }
 
   /**
@@ -76,7 +84,11 @@ public class DieEmpty {
    * @return      The new number of sides, in case anyone is looking
    * @throws      IllegalArgumentException
    */
-   public void setSides( int sides ) {
+   public void setSides( int nSides ) {
+     if ( nSides < MINIMUM_SIDES) {
+       throw new IllegalArgumentException();
+     }
+     this.sides = nSides;
    }
 
   /**
@@ -84,14 +96,14 @@ public class DieEmpty {
    * @return String representation of this Die
    */
    public String toString() {
-      return "";
+      return "[" + pips + "]";
    }
 
   /**
    * Class-wide method that returns a String representation of THIS die instance
    * @return String representation of this Die
    */
-   public static String toString( Die d ) {
+   public static String toString( int d ) {
       return "";
    }
 
