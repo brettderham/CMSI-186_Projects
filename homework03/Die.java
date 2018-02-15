@@ -76,7 +76,8 @@ public class Die {
    * @return the pip count of THIS die instance
    */
    public int getValue() {
-      return 0;
+      this.pips = sides;
+      return pips;
    }
 
   /**
@@ -103,8 +104,8 @@ public class Die {
    * Class-wide method that returns a String representation of THIS die instance
    * @return String representation of this Die
    */
-   public static String toString( int d ) {
-      return "";
+   public static String toString( Die d ) {
+      return d.toString();
    }
 
   /**
