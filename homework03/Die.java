@@ -1,8 +1,8 @@
 /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *  File name     :  Die.java
  *  Purpose       :  Provides a class describing a single die that can be rolled
- *  @author       :  B.J. Johnson
- *  Date          :  2017-02-06
+ *  @author       :  B.J. Johnson / Brett Derham
+ *  Date          :  2017-02-06 - 2018-02-15
  *  Description   :  This class provides the data fields and methods to describe a single game die.  A
  *                   die can have "N" sides.  Sides are randomly assigned sequential pip values, from 1
  *                   to N, with no repeating numbers.  A "normal" die would thus has six sides, with the
@@ -32,6 +32,8 @@
  *           -----  ----------  ------------  -----------------------------------------------------------
  *  @version 1.0.0  2017-02-06  B.J. Johnson  Initial writing and release
  *  @version 1.1.0  2017-02-17  B.J. Johnson  Filled in method code
+ *  @version 1.1.1  2018-02-13  Brett Derham  Started Die.java
+ *  @version 1.1.0  2018-02-15  Brett Derham  Finished Die.java
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
  import java.lang.Object;
  import java.lang.Math;
@@ -75,8 +77,9 @@ public class Die {
    *  "value"?
    * @return the pip count of THIS die instance
    */
+   int rollValue = (int)((Math.random())*sides+1);
    public int getValue() {
-      this.pips = sides;
+      this.pips = rollValue;
       return pips;
    }
 
@@ -97,6 +100,8 @@ public class Die {
    * @return String representation of this Die
    */
    public String toString() {
+      int rollValue = (int)((Math.random())*sides+1);
+      this.pips = rollValue;
       return "[" + pips + "]";
    }
 
@@ -113,6 +118,79 @@ public class Die {
    */
    public static void main( String[] args ) {
       System.out.println( "Hello world from the Die class..." );
+     Die d = null;
+     System.out.println( "Testing roll() for a die with 0 sides.");
+     try { d = new Die( 0 ); }
+     catch ( IllegalArgumentException iae ) { System.out.println( "Add more sides!" ); }
+     System.out.println( "Testing roll() for a die with 1 sides.");
+     try { d = new Die( 1 ); }
+     catch ( IllegalArgumentException iae ) { System.out.println( "Add more sides!" ); }
+     System.out.println( "Testing roll() for a die with 2 sides.");
+     try { d = new Die( 2 ); }
+     catch ( IllegalArgumentException iae ) { System.out.println( "Add more sides!" ); }
+     System.out.println( "Testing roll() for a die with 3 sides.");
+     try { d = new Die( 3 ); }
+     catch ( IllegalArgumentException iae ) { System.out.println( "Add more sides!" ); }
+     try { d = new Die( 4 ); }
+     catch ( IllegalArgumentException iae ) { System.out.println( "Add more sides!" ); }
+     System.out.println( "Testing roll() for a die with " + d.sides + " sides.");
+     System.out.println( "Role one = " + d.roll());
+     System.out.println( "Role two = " + d.roll());
+     System.out.println( "Role three = " + d.roll());
+     System.out.println( "Role four = " + d.roll());
+     System.out.println( "Role five = " + d.roll());
+     System.out.println( "Testing toString() method for a die with " + d.sides + " sides." );
+     System.out.println( "The die rolled was " + d.toString());
+     try { d = new Die( 5 ); }
+     catch ( IllegalArgumentException iae ) { System.out.println( "Add more sides!" ); }
+     System.out.println( "Testing roll() for a die with " + d.sides + " sides.");
+     System.out.println( "Role one = " + d.roll());
+     System.out.println( "Role two = " + d.roll());
+     System.out.println( "Role three = " + d.roll());
+     System.out.println( "Role four = " + d.roll());
+     System.out.println( "Role five = " + d.roll());
+     System.out.println( "Testing toString() method for a die with " + d.sides + " sides." );
+     System.out.println( "The die rolled was " + d.toString());
+     try { d = new Die( 10 ); }
+     catch ( IllegalArgumentException iae ) { System.out.println( "Add more sides!" ); }
+     System.out.println( "Testing roll() for a die with " + d.sides + " sides.");
+     System.out.println( "Role one = " + d.roll());
+     System.out.println( "Role two = " + d.roll());
+     System.out.println( "Role three = " + d.roll());
+     System.out.println( "Role four = " + d.roll());
+     System.out.println( "Role five = " + d.roll());
+     System.out.println( "Testing toString() method for a die with " + d.sides + " sides." );
+     System.out.println( "The die rolled was " + d.toString() );
+     try { d = new Die( 14 ); }
+     catch ( IllegalArgumentException iae ) { System.out.println( "Add more sides!" ); }
+     System.out.println( "Testing roll() for a die with " + d.sides + " sides.");
+     System.out.println( "Role one = " + d.roll() );
+     System.out.println( "Role two = " + d.roll() );
+     System.out.println( "Role three = " + d.roll() );
+     System.out.println( "Role four = " + d.roll() );
+     System.out.println( "Role five = " + d.roll() );
+     System.out.println( "Testing toString() method for a die with " + d.sides + " sides." );
+     System.out.println( "The die rolled was " + d.toString() );
+     try { d = new Die( 23 ); }
+     catch ( IllegalArgumentException iae ) { System.out.println( "Add more sides!" ); }
+     System.out.println( "Testing roll() for a die with " + d.sides + " sides.");
+     System.out.println( "Role one = " + d.roll() );
+     System.out.println( "Role two = " + d.roll() );
+     System.out.println( "Role three = " + d.roll() );
+     System.out.println( "Role four = " + d.roll() );
+     System.out.println( "Role five = " + d.roll() );
+     System.out.println( "Testing toString() method for a die with " + d.sides + " sides." );
+     System.out.println( "The die rolled was " + d.toString() );
+     try { d = new Die( 101 ); }
+     catch ( IllegalArgumentException iae ) { System.out.println( "Add more sides!" ); }
+     System.out.println( "Testing roll() for a die with " + d.sides + " sides.");
+     System.out.println( "Role one = " + d.roll() );
+     System.out.println( "Role two = " + d.roll() );
+     System.out.println( "Role three = " + d.roll() );
+     System.out.println( "Role four = " + d.roll() );
+     System.out.println( "Role five = " + d.roll() );
+     System.out.println( "Testing toString() method for a die with " + d.sides + " sides." );
+     System.out.println( "The die rolled was " + d.toString() );
    }
 
 }
