@@ -27,7 +27,7 @@
  *           -----  ----------  ------------  -----------------------------------------------------------
  *  @version 1.0.0  2017-02-09  B.J. Johnson  Initial writing and release
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-public class DiceSetEmpty {
+public class DiceSet {
 
   /**
    * private instance data
@@ -35,6 +35,7 @@ public class DiceSetEmpty {
    private int count;
    private int sides;
    private Die[] ds = null;
+   private final int MINIMUM_SIDES = 4;
 
    // public constructor:
   /**
@@ -44,15 +45,27 @@ public class DiceSetEmpty {
    * @throws IllegalArgumentException if one or both arguments don't make sense
    * @note   parameters are checked for validity; invalid values throw "IllegalArgumentException"
    */
-   public DiceSetEmpty( int count, int sides ) {
+   public DiceSet( int count, int sides ) {
+     if ( count < 1 || sides < MINIMUM_SIDES){
+       throw new IllegalArgumentException();
+     }
+     this.count = count;
+     this.sides = sides;
       ds = new Die[ count ];
+      for ( int i = 0; i < count; i ++ ) {
+      ds[i] = new Die( sides );
+    }
    }
 
   /**
    * @return the sum of all the dice values in the set
    */
    public int sum() {
-      return 0;
+      int sum = 0;
+      for ( int i = 0; i < count; i ++ ){
+        sum += ds[i].getValue();
+      }
+      return sum;
    }
 
   /**
@@ -61,6 +74,10 @@ public class DiceSetEmpty {
    *  the values of the dice in the set
    */
    public void roll() {
+     ds = new Die[ count ];
+     for ( int i = 0; i < count; i ++ ) {
+     ds[i].roll();
+     }
    }
 
   /**
@@ -86,22 +103,25 @@ public class DiceSetEmpty {
    * @return Public Instance method that returns a String representation of the DiceSet instance
    */
    public String toString() {
-      String result = "";
-      return result;
+     String result = "";
+     for ( int i = 0; i < count; i ++ ){
+       result += ds[i].toString();
+     }
+     return result;
    }
 
   /**
    * @return Class-wide version of the preceding instance method
    */
    public static String toString( DiceSet ds ) {
-      return "";
+     return ds.toString();
    }
 
   /**
    * @return  tru iff this set is identical to the set passed as an argument
    */
    public boolean isIdentical( DiceSet ds ) {
-      return true;
+       return true;
    }
   /**
    * A little test main to check things out
