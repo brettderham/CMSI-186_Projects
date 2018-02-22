@@ -26,6 +26,8 @@
  *            Rev      Date     Modified by:  Reason for change/modification
  *           -----  ----------  ------------  -----------------------------------------------------------
  *  @version 1.0.0  2017-02-09  B.J. Johnson  Initial writing and release
+ *  @version 1.0.1  2018-02-20  Brett Derham  Started DiceSet.java
+ *  @version 1.0.2  2018-02-21  Brett Derham  Finished DiceSet.java
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 public class DiceSet {
 
@@ -51,21 +53,22 @@ public class DiceSet {
      }
      this.count = count;
      this.sides = sides;
-      ds = new Die[ count ];
-      for ( int i = 0; i < count; i ++ ) {
-      ds[i] = new Die( sides );
-    }
+     this.ds = new Die[count];
+     for( int i = 0; i < count; i++ ) {
+       ds[i] = new Die( sides );
+       ds[i].roll();
+     }
    }
 
   /**
    * @return the sum of all the dice values in the set
    */
    public int sum() {
-      int sum = 0;
-      for ( int i = 0; i < count; i ++ ){
-        sum += ds[i].getValue();
-      }
-      return sum;
+     int sum = 0;
+     for ( int i = 0; i < ds.length; i++ ) {
+       sum += ds[i].getValue();
+     }
+     return sum;
    }
 
   /**
@@ -74,10 +77,9 @@ public class DiceSet {
    *  the values of the dice in the set
    */
    public void roll() {
-     ds = new Die[ count ];
-     for ( int i = 0; i < count; i ++ ) {
-     ds[i].roll();
-     }
+     for( int i = 0; i < ds.length; i++ ) {
+      ds[i].roll();
+    }
    }
 
   /**
@@ -87,7 +89,7 @@ public class DiceSet {
    * @trhows IllegalArgumentException if the index is out of range
    */
    public int rollIndividual( int dieIndex ) {
-      return 0;
+     return ds[dieIndex - 1].roll();
    }
 
   /**
@@ -95,8 +97,9 @@ public class DiceSet {
    * @param  dieIndex int of which die to roll
    * @trhows IllegalArgumentException if the index is out of range
    */
+
    public int getIndividual( int dieIndex ) {
-      return -999;
+     return ds[dieIndex - 1].getValue();
    }
 
   /**
@@ -104,7 +107,7 @@ public class DiceSet {
    */
    public String toString() {
      String result = "";
-     for ( int i = 0; i < count; i ++ ){
+     for ( int i = 0; i < count; i ++ ) {
        result += ds[i].toString();
      }
      return result;
@@ -120,14 +123,92 @@ public class DiceSet {
   /**
    * @return  tru iff this set is identical to the set passed as an argument
    */
-   public boolean isIdentical( DiceSet ds ) {
+   public boolean isIdentical( DiceSet dsSet ) {
+     if( sum() == dsSet.sum() ) {
        return true;
+     }
+     return false;
    }
   /**
    * A little test main to check things out
    */
    public static void main( String[] args ) {
-      // You do this part!
-   }
+    try {
+      System.out.println( "Hello world from the DiceSet class..." );
+      DiceSet ds1 = new DiceSet(4,4);
+      DiceSet ds2 = new DiceSet(5,4);
+      System.out.println( "Testing toString() method" );
+      System.out.println( "This set of die is " + ds1.toString() );
+      System.out.println( "Testing toString() method" );
+      System.out.println( "This set of die is " + DiceSet.toString(ds1));
+      System.out.println( "Testing sum() method" );
+      System.out.println( "The sum of the dice set is " + ds1.sum());
+      System.out.println( "Testing roll() method" );
+      ds1.roll();
+      System.out.println("The roll was " + ds1.toString());
+      System.out.println( "Testing rollIndividual() method" );
+      ds1.rollIndividual(3);
+      System.out.println("Rolling die number 3 you get: " + ds1.getIndividual(3));
+      System.out.println("The resulting dice set is now: " + ds1.toString());
+      System.out.println( "Testing isIdentical() method" );
+      System.out.println("Comparing " + ds1.toString() + " with " + ds2.toString() +
+                          " we get: " + ds1.isIdentical( ds2 ));
 
+      System.out.println("Introducing new Dice Set with 5 die with 10 sides each");
+      DiceSet ds3 = new DiceSet(5,10);
+      System.out.println( "Testing toString() method" );
+      System.out.println( "This set of die is " + ds3.toString() );
+      System.out.println( "Testing toString() method" );
+      System.out.println( "This set of die is " + DiceSet.toString(ds3));
+      System.out.println( "Testing sum() method" );
+      System.out.println( "The sum of the dice set is " + ds3.sum());
+      System.out.println( "Testing roll() method" );
+      ds3.roll();
+      System.out.println("The roll was " + ds3.toString());
+      System.out.println( "Testing rollIndividual() method" );
+      ds3.rollIndividual(4);
+      System.out.println("Rolling die number 4 you get: " + ds3.getIndividual(4));
+      System.out.println("The resulting dice set is now: " + ds3.toString());
+      System.out.println( "Testing isIdentical() method" );
+      System.out.println("Comparing " + ds2.toString() + " with " + ds3.toString() +
+                          " we get: " + ds2.isIdentical( ds3 ));
+
+      System.out.println("Introducing new Dice Set with 25 die with 50 sides each");
+      DiceSet ds4 = new DiceSet(25,50);
+      System.out.println( "Testing toString() method" );
+      System.out.println( "This set of die is " + ds4.toString() );
+      System.out.println( "Testing toString() method" );
+      System.out.println( "This set of die is " + DiceSet.toString(ds4));
+      System.out.println( "Testing sum() method" );
+      System.out.println( "The sum of the dice set is " + ds4.sum());
+      System.out.println( "Testing roll() method" );
+      ds4.roll();
+      System.out.println("The roll was " + ds4.toString());
+      System.out.println( "Testing rollIndividual() method" );
+      ds4.rollIndividual(20);
+      System.out.println("Rolling die number 20 you get: " + ds4.getIndividual(20));
+      System.out.println("The resulting dice set is now: " + ds4.toString());
+      System.out.println( "Testing isIdentical() method" );
+      System.out.println("Comparing " + ds3.toString() + " with " + ds4.toString() +
+                          " we get: " + ds3.isIdentical( ds4 ));
+
+      System.out.println("Introducing another Dice Set with 5 die with 4 sides each");
+      DiceSet ds5 = new DiceSet(5,4);
+      System.out.println( "Testing toString() method" );
+      System.out.println( "This set of die is " + ds5.toString() );
+      System.out.println( "Testing toString() method" );
+      System.out.println( "This set of die is " + DiceSet.toString(ds5));
+      System.out.println( "Testing sum() method" );
+      System.out.println( "The sum of the dice set is " + ds5.sum());
+      System.out.println( "Testing roll() method" );
+      ds5.roll();
+      System.out.println("The roll was " + ds5.toString());
+      System.out.println( "Testing isIdentical() method" );
+      System.out.println("Comparing " + ds5.toString() + " with " + ds5.toString() +
+                          " we get: " + ds5.isIdentical( ds5 ));
+    }
+    catch( NullPointerException ioe ) {
+        System.out.println( "Caught NullPointerException." );
+    }
+  }
 }
