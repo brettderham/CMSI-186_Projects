@@ -1,4 +1,4 @@
-/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *  File name     :  ClockSolver.java
  *  Purpose       :  The main program for the ClockSolver class
  *  @see
@@ -16,34 +16,23 @@
  *            Rev      Date     Modified by:  Reason for change/modification
  *           -----  ----------  ------------  -----------------------------------------------------------
  *  @version 1.0.0  2017-02-28  B.J. Johnson  Initial writing and release
+ *  @version 1.0.1  2017-03-12  Brett Derham  Final updates and upload
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-public class ClockSolver {
-  /**
-   *  Class field definintions go here
-   */
-   private final double MAX_TIME_SLICE_IN_SECONDS  = 1800.00;
-   private final double DEFAULT_TIME_SLICE_SECONDS = 60.0;
-   private final double EPSILON_VALUE              = 0.1;      // small value for double-precision comparisons
+ public class ClockSolver {
 
-  /**
-   *  Constructor
-   *  This just calls the superclass constructor, which is "Object"
-   */
-   public ClockSolver() {
-      super();
-   }
-
-  /**
-   *  Method to handle all the input arguments from the command line
-   *   this sets up the variables for the simulation
-   */
-   public void handleInitialArguments( String args[] ) {
-     // args[0] specifies the angle for which you are looking
-     //  your simulation will find all the angles in the 12-hour day at which those angles occur
-     // args[1] if present will specify a time slice value; if not present, defaults to 60 seconds
-     // you may want to consider using args[2] for an "angle window"
-
+   /**
+    *  The main program starts here
+    *  remember the constraints from the project description
+    *  @see  http://bjohnson.lmu.build/cmsi186web/homework04.html
+    *  @param  args  String array of the arguments from the command line
+    *                args[0] is the angle for which we are looking
+    *                args[1] is the time slice; this is optional and defaults to 60 seconds
+    */
+    public static void main( String args[] ) {
+      double EPSILON_VALUE = .1;      // small value for double-precision comparisons
+      double angle = 0.0;
+      double timeSlice = 10;
       System.out.println( "\n   Hello world, from the ClockSolver program!!\n\n" ) ;
       if( 0 == args.length ) {
          System.out.println( "   Sorry you must enter at least one argument\n" +
@@ -52,24 +41,20 @@ public class ClockSolver {
          System.exit( 1 );
       }
       Clock clock = new Clock();
-   }
+      try { angle = clock.validateAngleArg( args[0] ); }
+      catch (Exception e) { System.out.println( "Sorry! Angle must be between 0 and 360 degrees!" ); }
+      try { timeSlice = clock.validateTimeSliceArg( args[1] ); }
+      catch (Exception e) { timeSlice = clock.validateTimeSliceArg(""); } // will set timeSlice to 60.0
+      angle = ( angle > 180 ) ? angle - 180 : angle;
+      System.out.println( "Angle Value = " + angle + " Time Slice = " + timeSlice + " seconds." );
+      System.out.println( " \nFound angle " + angle + " at times: " );
+      while( clock.getTotalSeconds() < 43200 ) {
+         if ( Math.abs( clock.getHandAngle() -  angle ) <= EPSILON_VALUE ) {
+           System.out.println( "   " + clock.toString() );
+         }
+         clock.tick();
+       }
 
-  /**
-   *  The main program starts here
-   *  remember the constraints from the project description
-   *  @see  http://bjohnson.lmu.build/cmsi186web/homework04.html
-   *  @param  args  String array of the arguments from the command line
-   *                args[0] is the angle for which we are looking
-   *                args[1] is the time slice; this is optional and defaults to 60 seconds
-   */
-   public static void main( String args[] ) {
-      ClockSolver cse = new ClockSolver();
-      Clock clock    = new Clock();
-      double[] timeValues = new double[3];
-      cse.handleInitialArguments( args );
-      while( true ) {
-         break;
-      }
-      System.exit( 0 );
-   }
-}
+       System.exit( 0 );
+    }
+ }
