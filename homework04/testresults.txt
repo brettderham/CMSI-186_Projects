@@ -1,0 +1,282 @@
+.
+.
+100 compile errors occurred, the maximum allowed.
+
+the top "/" character of the file was missing.  I added it back
+recompiled and all is well
+.
+.
+
+CLOCK CLASS TESTER PROGRAM
+--------------------------
+
+  Creating a new clock: 
+    New clock created: 0.0:0.0:0.0
+
+    Testing validateAngleArg() method.
+      sending '  0 degrees', expecting double value   0.0    : Correct!
+      sending '  -1.0 degrees', expecting Incorrect: Incorrect
+      sending '  30.03 degrees', expecting value   30.03   : Correct!
+      sending '  361 degrees', expecting value   360   : Correct!
+      sending '  361 degrees', expecting Incorrect: Incorrect
+
+    Testing validateTimeSliceArg() method.
+      sending '  0 degrees', expecting double value   0.0    : Correct!
+      sending '  -1.0 second', expecting Incorrect : Incorrect
+      sending '  1000.0 second', expecting value 1000.0 second  : Correct!
+      sending '  1800.0 second', expecting value 1800.0 second   : Correct!
+      sending '  1801.0 second', expecting Incorrect : Incorrect
+
+    Testing tick() method
+      New time slice value is 0.0
+Current time  is  0.0:0.0:0.0 and Total Second Value is  0.0
+Current time  is  0.0:0.0:0.0 and Total Second Value is  0.0
+Current time  is  0.0:0.0:0.0 and Total Second Value is  0.0
+      New time slice value is 1.0
+Current time  is  0.0:0.0:0.0 and Total Second Value is  1.0
+Current time  is  0.0:0.0:1.0 and Total Second Value is  2.0
+Current time  is  0.0:0.0:2.0 and Total Second Value is  3.0
+      New time slice value is 1600.0
+Current time  is  0.0:0.0:3.0 and Total Second Value is  1600.0
+Current time  is  0.0:26.0:40.0 and Total Second Value is  3197.0
+Current time  is  0.0:53.0:17.0 and Total Second Value is  4794.0
+      New time slice value is 3600.0
+Current time  is  1.0:19.0:54.0 and Total Second Value is  8394.0
+Current time  is  2.0:19.0:54.0 and Total Second Value is  11994.0
+Current time  is  3.0:19.0:54.0 and Total Second Value is  15594.0
+Time Slice Value set to 5.
+Total Seconds Value is0.0
+Tick! 5.0
+Tick! 10.0
+Tick! 15.0
+Total Seconds Value is 15.0
+Total seconds set to 5,601.
+Hour Hand Angle is 46.71234
+Minute Hand Angle is 200.10000000000002
+Hand Angle is 153.38766000000004
+Total Seconds Value reset to 0.
+Time Slice Value set to 100.
+Total Seconds Value is 0.0
+Tick! 100.0
+Tick! 200.0
+Tick! 300.0
+Total Seconds Value is 300.0
+Total seconds set to 2,901.
+Hour Hand Angle is 24.19434
+Minute Hand Angle is 290.1
+Hand Angle is 265.90566
+
+   Hello world, from the ClockSolver program!!
+
+
+   Sorry you must enter at least one argument
+   Usage: java ClockSolver <angle> [timeSlice]
+   Please try again...........
+
+   Hello world, from the ClockSolver program!!
+
+
+Sorry! Angle must be between 0 and 360 degrees!
+
+   Hello world, from the ClockSolver program!!
+
+
+
+   Hello world, from the ClockSolver program!!
+
+
+Angle Value = 90.0 Time Slice = 0.0 seconds.
+ 
+Found angle 90.0 at times: 
+
+   Hello world, from the ClockSolver program!!
+
+
+Angle Value = 180.0 Time Slice = 60.0 seconds.
+ 
+Found angle 180.0 at times: 
+
+   Hello world, from the ClockSolver program!!
+
+
+
+   Hello world, from the ClockSolver program!!
+
+
+Sorry! Angle must be between 0 and 360 degrees!
+
+   Hello world, from the ClockSolver program!!
+
+
+Angle Value = 30.0 Time Slice = 60.0 seconds.
+ 
+Found angle 30.0 at times: 
+   1.0:0.0:0.0
+
+   Hello world, from the ClockSolver program!!
+
+
+Angle Value = 30.0 Time Slice = 10.0 seconds.
+ 
+Found angle 30.0 at times: 
+   1.0:0.0:0.0
+   3.0:21.0:50.0
+   5.0:21.0:50.0
+   7.0:43.0:40.0
+   9.0:43.0:40.0
+
+   Hello world, from the ClockSolver program!!
+
+
+Angle Value = 30.0 Time Slice = 1.0 seconds.
+ 
+Found angle 30.0 at times: 
+   0.0:5.0:27.0
+   0.0:5.0:28.0
+   1.0:0.0:0.0
+   1.0:0.0:1.0
+   1.0:10.0:54.0
+   1.0:10.0:55.0
+   2.0:5.0:27.0
+   2.0:5.0:28.0
+   2.0:16.0:22.0
+   2.0:16.0:23.0
+   3.0:10.0:55.0
+   3.0:10.0:56.0
+   3.0:21.0:49.0
+   3.0:21.0:50.0
+   3.0:21.0:51.0
+   4.0:16.0:22.0
+   4.0:16.0:23.0
+   4.0:16.0:24.0
+   4.0:27.0:17.0
+   4.0:27.0:18.0
+   5.0:21.0:50.0
+   5.0:21.0:51.0
+   5.0:32.0:44.0
+   5.0:32.0:45.0
+   5.0:32.0:46.0
+   6.0:27.0:17.0
+   6.0:27.0:18.0
+   6.0:27.0:19.0
+   6.0:38.0:12.0
+   6.0:38.0:13.0
+   7.0:32.0:45.0
+   7.0:32.0:46.0
+   7.0:43.0:40.0
+   7.0:43.0:41.0
+   8.0:38.0:13.0
+   8.0:38.0:14.0
+   8.0:49.0:7.0
+   8.0:49.0:8.0
+   9.0:43.0:40.0
+   9.0:43.0:41.0
+   9.0:54.0:35.0
+   9.0:54.0:36.0
+   10.0:49.0:8.0
+   10.0:49.0:9.0
+   11.0:54.0:35.0
+   11.0:54.0:36.0
+
+   Hello world, from the ClockSolver program!!
+
+
+Angle Value = 75.23 Time Slice = 60.0 seconds.
+ 
+Found angle 75.23 at times: 
+   8.0:30.0:0.0
+
+   Hello world, from the ClockSolver program!!
+
+
+Angle Value = 75.23 Time Slice = 7.0 seconds.
+ 
+Found angle 75.23 at times: 
+   3.0:2.0:42.0
+   4.0:8.0:9.0
+   5.0:13.0:36.0
+   8.0:57.0:22.0
+
+   Hello world, from the ClockSolver program!!
+
+
+Angle Value = 75.23 Time Slice = 1.3 seconds.
+ 
+Found angle 75.23 at times: 
+   0.0:13.0:40.29999999999234
+   0.0:13.0:41.59999999999229
+   1.0:19.0:7.600000000326872
+   1.0:19.0:8.900000000327054
+   2.0:24.0:34.90000000053806
+   2.0:24.0:36.20000000053733
+   3.0:2.0:41.599999999258216
+   3.0:2.0:42.89999999925749
+   3.0:30.0:3.4999999983392627
+   4.0:8.0:8.89999999706015
+   4.0:8.0:10.199999997059422
+   4.0:35.0:30.799999996143015
+   5.0:13.0:36.1999999948639
+   5.0:13.0:37.499999994863174
+   5.0:40.0:58.09999999394495
+   5.0:40.0:59.39999999394422
+   6.0:19.0:4.799999992665107
+   6.0:46.0:25.39999999174688
+   6.0:46.0:26.699999991746154
+   7.0:24.0:32.09999999046704
+   7.0:51.0:52.699999989548814
+   7.0:51.0:53.99999998954809
+   8.0:29.0:59.39999998826897
+   8.0:30.0:0.6999999882682459
+   8.0:57.0:21.29999998735002
+   9.0:35.0:26.699999990989454
+   9.0:35.0:27.999999990992364
+   10.0:40.0:53.99999999978172
+   10.0:40.0:55.29999999978463
+   11.0:46.0:22.6000000085769
+
+   Hello world, from the ClockSolver program!!
+
+
+Angle Value = 90.0 Time Slice = 2.5 seconds.
+ 
+Found angle 90.0 at times: 
+   0.0:16.0:22.5
+   1.0:21.0:50.0
+   2.0:27.0:17.5
+   3.0:0.0:0.0
+   3.0:32.0:45.0
+   4.0:5.0:27.5
+   4.0:38.0:12.5
+   5.0:10.0:55.0
+   5.0:43.0:40.0
+   6.0:16.0:22.5
+   6.0:49.0:7.5
+   7.0:21.0:50.0
+   7.0:54.0:35.0
+   8.0:27.0:17.5
+
+   Hello world, from the ClockSolver program!!
+
+
+Angle Value = 180.0 Time Slice = 1.8 seconds.
+ 
+Found angle 180.0 at times: 
+   0.0:32.0:43.79999999996562
+   1.0:38.0:11.40000000035161
+   2.0:43.0:38.99999999992724
+   3.0:49.0:6.5999999983396265
+   4.0:54.0:34.19999999675201
+   6.0:0.0:1.7999999951643986
+   7.0:5.0:29.399999993576785
+   8.0:10.0:56.99999999198917
+   9.0:16.0:24.599999991645745
+   10.0:21.0:52.1999999979962
+   11.0:27.0:19.800000004346657
+
+   Hello world, from the ClockSolver program!!
+
+
+Angle Value = 90.0 Time Slice = 1800.0 seconds.
+ 
+Found angle 90.0 at times: 
+   3.0:0.0:0.0
