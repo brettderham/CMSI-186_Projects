@@ -36,12 +36,11 @@ public class Ball {
     ball[3] = ball[3]-(.01*ball[3])*ball[4];
   }
 
-
-    public double[] getVelocity() {
-      double velocityX = ball[2];
-      double velocityY = ball[3];
-      double[] currentVelocity = {velocityX, velocityY};
-      return currentVelocity;
+  public double[] getVelocity() {
+    double velocityX = ball[2];
+    double velocityY = ball[3];
+    double[] currentVelocity = {velocityX, velocityY};
+    return currentVelocity;
     }
 
   public void currentPosition() {
